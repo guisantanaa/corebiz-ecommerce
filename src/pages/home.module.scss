@@ -97,9 +97,17 @@
     .cardContainer {
       margin: 0 auto;
       gap: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      img {
+        width: 11rem;
+        height: 10rem;
+      }
 
       .card {
         margin: 0 auto;
+        width: 100%;
 
         button {
           width: 80%;
