@@ -1,0 +1,69 @@
+.header {
+  position: fixed;
+  margin-top: -5rem;
+  background: #fff;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input {
+    align-items: center;
+    width: 34rem;
+    border: 0;
+    border-bottom: 1px solid #7a7a7a;
+    outline: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+  }
+  ::placeholder {
+    font-size: 1rem;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  button {
+    margin-right: 1rem;
+    border: none;
+    background: #fff;
+  }
+
+  a {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    position: fixed;
+    gap: 1rem;
+    .form {
+      display: flex;
+      margin: 1rem;
+
+      input {
+        display: none;
+      }
+      input:focus {
+        border: 1px solid #000;
+        border-radius: 1.5rem;
+        width: 100%;
+        z-index: 1;
+        transition: width 1s ease-in-out;
+      }
+    }
+  }
+
+  .logo {
+    text-align: center;
+
+    img {
+      width: 6.5rem;
+      height: 2rem;
+    }
+
+    .count a {
+      display: none;
+    }
+  }
+}
