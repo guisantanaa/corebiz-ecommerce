@@ -42,7 +42,7 @@ export default function Home() {
 
         <div className={styles.card}>
           <img src="./sapato2.svg" alt="produto sapato" />
-          <p className={styles.description}>SANDÁLIA LINHO BROWN</p>
+          <p className={styles.description}>SANDÁLIA LINHO </p>
           <span>*****</span>
           <p className={styles.price}>por R$ 199,90</p>
           <button>Adicionar ao carrinho</button>
@@ -58,7 +58,7 @@ export default function Home() {
 
         <div className={styles.card}>
           <img src="./cinto.svg" alt="produto sapato" />
-          <p className={styles.description}>CINTO SEMICRONO PRETO </p>
+          <p className={styles.description}>CINTO SEMICRONO </p>
           <span>*****</span>
           <p className={styles.price}>por R$ 79,90</p>
           <button>Adicionar ao carrinho</button>
