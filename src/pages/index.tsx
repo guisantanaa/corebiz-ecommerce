@@ -1,7 +1,42 @@
 import SanCarousel from 'sancarousel';
-import styles from './home.module.scss';
+import { api } from '../services/api';
+import { useCart } from 'react-use-cart';
+import { useEffect, useState } from 'react';
 
-export default function Home() {
+import styles from './home.module.scss';
+import Link from 'next/link';
+
+interface Products {
+  productId: number;
+  productName: string;
+  imageUrl: string;
+  listPrice: number;
+  price: number;
+}
+
+export default function Home({}: Products) {
+  const [products, setProducts] = useState([]);
+  const { addItem } = useCart();
+
+  useEffect(() => {
+    async function loadProducts() {
+      const response = await api.get('products');
+
+      const data = response.data.map((product) => ({
+        ...product,
+      }));
+
+      setProducts(data);
+    }
+
+    loadProducts();
+  }, []);
+
+  function convertPrice(price: number) {
+    const convertedPrice = price / 100;
+    return convertedPrice.toFixed(2);
+  }
+
   const slides = [
     {
       img: 'https://images.unsplash.com/photo-1603191659812-ee978eeeef76?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTF8fHNob2VzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60',
@@ -12,9 +47,6 @@ export default function Home() {
     {
       img: 'https://images.unsplash.com/photo-1619223517625-3ec487a7c1d1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODZ8fHNob2VzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60',
     },
-    {
-      img: 'https://images.unsplash.com/photo-1542219550-37153d387c27?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjZ8fHNob2VzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60',
-    },
   ];
 
   return (
@@ -23,46 +55,26 @@ export default function Home() {
         slides={slides}
         spaceBetweenSlides="0px 10px 10px 5px"
         height="350px"
-        autoPlay={2000}
+        autoPlay={3000}
       />
 
       <div className={styles.subTitle}>
         <h2>Mais vendidos</h2>
-        <hr></hr>
+        <hr />
       </div>
 
       <section className={styles.cardContainer}>
-        <div className={styles.card}>
-          <img src="./sapato1.svg" alt="produto sapato" />
-          <p className={styles.description}>SAPATO FLOATER PRETO</p>
-          <span>*****</span>
-          <p className={styles.price}>por R$ 259,90</p>
-          <button>Adicionar ao carrinho</button>
-        </div>
-
-        <div className={styles.card}>
-          <img src="./sapato2.svg" alt="produto sapato" />
-          <p className={styles.description}>SANDÁLIA LINHO </p>
-          <span>*****</span>
-          <p className={styles.price}>por R$ 199,90</p>
-          <button>Adicionar ao carrinho</button>
-        </div>
-
-        <div className={styles.card}>
-          <img src="./bota.svg" alt="produto sapato" />
-          <p className={styles.description}>BOTA MUSTANG PRETO</p>
-          <span>*****</span>
-          <p className={styles.price}>por R$ 299,90</p>
-          <button>Adicionar ao carrinho</button>
-        </div>
-
-        <div className={styles.card}>
-          <img src="./cinto.svg" alt="produto sapato" />
-          <p className={styles.description}>CINTO SEMICRONO </p>
-          <span>*****</span>
-          <p className={styles.price}>por R$ 79,90</p>
-          <button>Adicionar ao carrinho</button>
-        </div>
+        {products.map((product) => (
+          <div className={styles.card}>
+            <Link href="/product">
+              <img src={product.imageUrl} alt={product.productName} />
+            </Link>
+            <p className={styles.description}>{product.productName}</p>
+            <span>*****</span>
+            <p className={styles.price}>por R${convertPrice(product.price)}</p>
+            <button>Comprar</button>
+          </div>
+        ))}
       </section>
 
       <div className={styles.Form}>

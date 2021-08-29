@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 
   input {
     align-items: center;
@@ -30,6 +31,14 @@
 
   a {
     margin: 0 auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .form {
+    input {
+      width: auto;
+    }
   }
 }
 

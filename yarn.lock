@@ -1678,6 +1678,11 @@ react-responsive-carousel@^3.2.19:
     prop-types "^15.5.8"
     react-easy-swipe "^0.0.21"
 
+react-use-cart@^1.11.2:
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/react-use-cart/-/react-use-cart-1.11.2.tgz#a6ca3f6b3fa69d5d2db529bbc21fc917678d709d"
+  integrity sha512-hszGDHX+Dr/xHuIBtvdQTMTonEIZEhlh4MP//mLZ4B0XjSUCCLIfETZJijq7EXfz1dhdl4f0Mg4QqoyZ8+aFNQ==
+
 react@17.0.2, react@^17.x:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"

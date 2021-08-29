@@ -12,8 +12,8 @@ export default class MyDocument extends Document {
           />
 
           <link rel="shortcut icon" href="/faviconCore.png" type="image/svg" />
-          <title>Corebiz</title>
         </Head>
+
         <body>
           <Main />
           <NextScript />
