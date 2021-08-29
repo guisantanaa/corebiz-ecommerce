@@ -44,4 +44,4 @@ $ yarn dev
 
 <h3>Link de deploy da aplicação</h3>
 
-<a href="" target="_blank">Link</a>
+<a href="https://corebiz-ecommerce.vercel.app/" target="_blank">Link</a>
